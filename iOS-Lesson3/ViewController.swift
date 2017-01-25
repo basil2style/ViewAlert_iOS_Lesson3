@@ -23,8 +23,8 @@ class ViewController: UIViewController {
         showMyActionSheet()
     }
 
-    func showMyAlert()  {
-        var alerController =  UIAlertController(title: "My Alert", message: "Hello world,Alert example", preferredStyle: .alert)
+    func showMyAlert(alertTitle:String,alertMessage: String)  {
+        var alerController =  UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
         var cancelBtn = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alerController.addAction(cancelBtn)
         self.present(alerController,animated: true, completion: nil)
@@ -33,8 +33,17 @@ class ViewController: UIViewController {
     
     func showMyActionSheet()  {
         let actionSheetController = UIAlertController(title: "Action Sheet", message: "Here's a message", preferredStyle: .actionSheet)
-        var okayBtn = UIAlertAction(title: "Okay", style: .destructive, handler: nil)
-        actionSheetController.addAction(okayBtn)
+        var yesBtn = UIAlertAction(title: "Yes", style: .default, handler: {
+            action in
+            self.showMyAlert(alertTitle: "Haiii", alertMessage: "You chose well")
+        })
+        var noBtn = UIAlertAction(title: "No", style: .destructive, handler: {
+            action in
+            self.showMyAlert(alertTitle: "Nope", alertMessage: "You selected head")
+        })
+        
+        actionSheetController.addAction(yesBtn)
+        actionSheetController.addAction(noBtn)
         self.present(actionSheetController,animated: true, completion: nil)
         
     }
