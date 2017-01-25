@@ -30,13 +30,18 @@ class ViewController: UIViewController {
         self.present(alerController,animated: true, completion: nil)
         
     }
+    func yesButtonHandler(alert:UIAlertAction) {
+        self.showMyAlert(alertTitle: "Title", alertMessage: "How are you")
+    }
     
     func showMyActionSheet()  {
         let actionSheetController = UIAlertController(title: "Action Sheet", message: "Here's a message", preferredStyle: .actionSheet)
-        var yesBtn = UIAlertAction(title: "Yes", style: .default, handler: {
+  /*      var yesBtn = UIAlertAction(title: "Yes", style: .default, handler: {
             action in
             self.showMyAlert(alertTitle: "Haiii", alertMessage: "You chose well")
-        })
+        }) */
+        var yesBtn = UIAlertAction(title: "Yes", style: .default, handler: yesButtonHandler)
+
         var noBtn = UIAlertAction(title: "No", style: .destructive, handler: {
             action in
             self.showMyAlert(alertTitle: "Nope", alertMessage: "You selected head")
